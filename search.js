@@ -23,10 +23,10 @@ const user = [
       .value.toUpperCase();
     
       if (reqSkill == "" || reqLocation == "") {
-      if (document.getElementsByClassName("noResult")) {
-        var removeNode = document.getElementById("resultsSection");
-        removeNode.removeChild(removeNode.firstChild);
-      }
+      // if (document.getElementsByClassName("noResult")) {
+      //   var removeNode = document.getElementById("resultsSection");
+      //   removeNode.removeChild(removeNode.firstChild);
+      // }
       return user;
     } 
     else {
@@ -61,8 +61,9 @@ const user = [
     });
   }
   function showResult() {
+    clearResults()
     const fetchedResult = searchFunction();
-    console.log(fetchedResult);
+    // console.log(fetchedResult);
     if (fetchedResult.length != 0)
       fetchedResult.map((item) => {
         const resultElementDiv = document.createElement("div");

@@ -28,23 +28,26 @@
         </ul>
       </nav>
       <!-- heading -->
-      <h1>FIND<br>BEST TALENT</h1>
+      <h1>FIND<br><span class="typed-text"></span>
+        <span class="cursor">&nbsp;</span>
+      </h1>
       <div class="searchBar">
-        <input type="text" name="searchSkillBox" id="searchSkillBox"  placeholder="Enter the skills needed">
-        <input type="text" name="searchLocationBox" id="searchLocationBox"   placeholder="Enter the location needed">
-        
-        <button onclick="showResult">Search</button>
+        <input type="text" name="searchSkillBox" id="searchSkillBox" placeholder="Enter the skills needed">
+        <input type="text" name="searchLocationBox" id="searchLocationBox" placeholder="Enter the location needed">
+
+        <button onclick="showResult()">Search</button>
       </div>
     </section>
     <section class="Results">
       <!-- heading -->
       <div class="commonHeading">Results</div>
       <div id="resultsSection">
-       
+
       </div>
     </section>
   </main>
   <script src="search.js" defer></script>
+  <script src="index.js" defer></script>
 </body>
 
 </html>
