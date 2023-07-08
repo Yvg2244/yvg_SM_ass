@@ -78,11 +78,6 @@ const user = [
     <div class="candidateAge">Age <span>${item.age} </span></div>
     <div class="candidateSkills">Skills <span>${item.role}</span></div>
     <div class="candidateExpectedPrice">ExpectedPrice <span>50K </span></div>
-    <div class="candidateIntro">ExpectedPrice <span>Lorem ipsum dolor sit amet consectetur adipisicing elit
-        Hic
-        dignissimos repellendus aliquam doloribus vitae illo sapiente sequi necessitatibus temporibus
-        dolore</span>
-    </div>
     <button>Connect</button>
   </div>`;
         document.getElementById("resultsSection").appendChild(resultElementDiv);
