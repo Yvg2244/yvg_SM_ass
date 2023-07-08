@@ -11,22 +11,108 @@ const user = [
     location: "GHAZIABAD",
   },
 ];
-const userShowContainer=document.getElementById("resultsSection")
-function skillchanged(){
-  console.log("first")
+const userShowContainer = document.getElementById("resultsSection");
+function searchFunction() {
+  const reqSkill = document
+    .getElementById("searchSkillBox")
+    .value.toUpperCase();
+  const reqLocation = document
+    .getElementById("searchLocationBox")
+    .value.toUpperCase();
+  
+    if (reqSkill == "" || reqLocation == "") {
+    if (document.getElementsByClassName("noResult")) {
+      var removeNode = document.getElementById("resultsSection");
+      removeNode.removeChild(removeNode.firstChild);
+    }
+    return user;
+  } 
+  else {
+    return user.filter((item) => {
+      if (item.location == reqLocation && item.role == reqSkill) return item;
+    });
+  }
 }
-function locationchanged(){
-  console.log("sec")
+
+function showAllCandidates() {
+  user.map((item) => {
+    const resultElementDiv = document.createElement("div");
+    resultElementDiv.classList.add("candidateCard");
+    resultElementDiv.innerHTML = `<div class="candidateImg"><img
+    src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80"
+    alt=""></div>
+
+<div class="candidateData">
+  <div class="candidateName">Name <span>${item.name}</span></div>
+  <div class="candidateName">Location <span>${item.location}</span></div>
+  <div class="candidateAge">Age <span>${item.age} </span></div>
+  <div class="candidateSkills">Skills <span>${item.role}</span></div>
+  <div class="candidateExpectedPrice">ExpectedPrice <span>50K </span></div>
+  <div class="candidateIntro">ExpectedPrice <span>Lorem ipsum dolor sit amet consectetur adipisicing elit
+      Hic
+      dignissimos repellendus aliquam doloribus vitae illo sapiente sequi necessitatibus temporibus
+      dolore</span>
+  </div>
+  <button>Connect</button>
+</div>`;
+    document.getElementById("resultsSection").appendChild(resultElementDiv);
+  });
 }
-function  searchFunction(){
-  const reqSkill=document.getElementById("searchSkillBox").value.toUpperCase()
-  const reqLocation=document.getElementById("searchLocationBox").value.toUpperCase()
-  console.log(reqLocation,reqSkill)
-  const results= user.filter((item)=>{
-    if(item.location==reqLocation && item.role==reqSkill)
-    return item
-  })
-console.log(results)}
+function showResult() {
+  const fetchedResult = searchFunction();
+  console.log(fetchedResult);
+  if (fetchedResult.length != 0)
+    fetchedResult.map((item) => {
+      const resultElementDiv = document.createElement("div");
+      resultElementDiv.classList.add("candidateCard");
+      resultElementDiv.innerHTML = `<div class="candidateImg"><img
+    src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80"
+    alt=""></div>
+
+<div class="candidateData">
+  <div class="candidateName">Name <span>${item.name}</span></div>
+  <div class="candidateName">Location <span>${item.location}</span></div>
+  <div class="candidateAge">Age <span>${item.age} </span></div>
+  <div class="candidateSkills">Skills <span>${item.role}</span></div>
+  <div class="candidateExpectedPrice">ExpectedPrice <span>50K </span></div>
+  <div class="candidateIntro">ExpectedPrice <span>Lorem ipsum dolor sit amet consectetur adipisicing elit
+      Hic
+      dignissimos repellendus aliquam doloribus vitae illo sapiente sequi necessitatibus temporibus
+      dolore</span>
+  </div>
+  <button>Connect</button>
+</div>`;
+      document.getElementById("resultsSection").appendChild(resultElementDiv);
+    });
+  else {
+    clearResults();
+    const reqSkill = document
+      .getElementById("searchSkillBox")
+      .value.toUpperCase();
+    const reqLocation = document
+      .getElementById("searchLocationBox")
+      .value.toUpperCase();
+
+    if (reqSkill == "" || reqLocation == "") {
+      if (document.getElementsByClassName("noResult")) {
+        var removeNode = document.getElementById("resultsSection");
+        removeNode.removeChild(removeNode.firstChild);
+        showAllCandidates();
+      }
+    } else {
+      const resultElementDiv = document.createElement("div");
+      resultElementDiv.classList.add("noResult");
+      resultElementDiv.innerHTML = "No results found";
+      document.getElementById("resultsSection").appendChild(resultElementDiv);
+    }
+  }
+}
+function clearResults() {
+  const myNode = document.getElementById("resultsSection");
+  while (myNode.firstChild) {
+    myNode.removeChild(myNode.lastChild);
+  }
+}
 //typing effect -----------------------------------------
 const typedTextSpan = document.querySelector(".typed-text");
 const cursorSpan = document.querySelector(".cursor");
@@ -71,6 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // caraousel----------------------------------------------
 window.addEventListener("DOMContentLoaded", function () {
+  showAllCandidates();
   const carouselTrack = document.querySelector(".carouselTrack");
   const carouselSlides = Array.from(carouselTrack.children);
   const slideWidth = carouselSlides[0].getBoundingClientRect().width;

@@ -573,10 +573,9 @@ input[type="submit"]:hover {
 
   .searchBar {
     display: flex;
-    width: full;
-
-    justify-items: center;
-    justify-content: space-evenly;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
   }
   #searchBox {
     margin: 0;
