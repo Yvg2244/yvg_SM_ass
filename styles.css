@@ -589,7 +589,7 @@ input[type="submit"]:hover {
   margin: 0;
   font-family: "customFont", sans-serif;
   border: 2px solid black;
-  width: 50vw;
+  width: 90vw;
   padding: .5rem;
   font-size: 1rem;
 }
