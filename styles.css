@@ -300,11 +300,11 @@ button {
   justify-items: center;
   justify-content: space-evenly;
 }
-#searchBox {
+#searchSkillBox,#searchLocationBox {
   margin: 0;
   font-family: "customFont", sans-serif;
   border: 2px solid black;
-  width: 65vw;
+  width: 33vw;
   padding: 1rem;
   font-size: 1rem;
 }
@@ -703,4 +703,23 @@ input[type="submit"]:hover {
   #register-form {
     display: none;
   }
+}
+/* ----------------------blinking */
+span.cursor {
+  font-family: Arial, Helvetica, sans-serif;
+  display: inline-block;
+  background-color: #3c3c3c;
+  margin-left: 0.1rem;
+  width: 3px;
+  animation: blink 1s infinite;
+}
+p span.cursor.typing {
+  animation: none;
+}
+@keyframes blink {
+  0%  { background-color: #3c3c3c; }
+  49% { background-color: #3c3c3c; }
+  50% { background-color: transparent; }
+  99% { background-color: transparent; }
+  100%  { background-color: #3c3c3c; }
 }
